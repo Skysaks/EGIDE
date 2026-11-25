@@ -1,0 +1,24 @@
+/* settings drawer */
+.drawer{position:fixed;top:0;right:0;bottom:0;width:380px;max-width:100vw;background:var(--s1);border-left:1px solid var(--line2);z-index:250;transform:translateX(102%);transition:transform .35s cubic-bezier(.2,.9,.25,1);overflow-y:auto;padding:20px 20px 40px}
+.drawer.on{transform:none;box-shadow:-30px 0 80px rgba(0,0,0,.3)}
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:240;opacity:0;pointer-events:none;transition:.3s}
+.scrim.on{opacity:1;pointer-events:auto}
+.sw{display:flex;gap:10px;flex-wrap:wrap}
+.sw button{width:30px;height:30px;border-radius:15px;border:3px solid transparent;box-shadow:0 0 0 1px var(--line2)}
+.sw button.on{border-color:var(--bg);box-shadow:0 0 0 2px var(--t1)}
+.srow{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:14px}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:var(--t1);color:var(--bg);padding:12px 18px;border-radius:14px;font-size:14px;font-weight:600;opacity:0;transition:.3s;z-index:400;pointer-events:none;max-width:90vw}
+.toast.on{opacity:1;transform:translateX(-50%)}
+[data-density=compact] .kpi{padding:11px 12px}[data-density=compact] .kpi b{font-size:22px}
+[data-density=compact] td{padding:8px 12px}[data-density=compact] .grid{gap:10px}[data-density=compact] .pb{padding:4px 12px 12px}
+@media (max-width:1180px){.g6{grid-template-columns:repeat(3,1fr)}.g21,.g12{grid-template-columns:1fr}.g4{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:980px){.rail{display:none}.side{display:none}.g3,.g2{grid-template-columns:1fr}.dmain{padding:16px}}
+@media (max-width:560px){
+  .top{padding:9px 10px;gap:6px}.brand span,.brand small,.tr .pill{display:none}
+  .seg button{padding:7px 9px;font-size:12px}
+  .stage{padding:0}
+  .phone{width:100vw;height:calc(100vh - 51px);height:calc(100dvh - 51px);border-radius:0;box-shadow:none}
+  .island,.sbar{display:none}
+  .float{top:14px}.full{padding-top:20px}.overlay{padding-top:40px}
+  .g6{grid-template-columns:repeat(2,1fr)}
+}

@@ -1,0 +1,15 @@
+/* stage + rail */
+.stage{display:flex;justify-content:center;gap:56px;padding:32px 24px 60px;align-items:flex-start}
+.rail{width:330px;padding-top:20px}
+.rail h1{font-size:30px;font-weight:700;letter-spacing:-.02em;line-height:1.1;margin-bottom:10px}
+.rail p.lead{color:var(--t2);font-size:14.5px;margin-bottom:20px}
+.rail .grp{margin-bottom:22px}
+.rail .grp h4,.lbl{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);font-weight:600;margin-bottom:9px}
+.lbl{margin:16px 0 8px}
+.jump{display:flex;align-items:center;gap:10px;width:100%;padding:10px 12px;border-radius:12px;background:var(--s1);border:1px solid var(--line);margin-bottom:6px;font-size:13.5px;transition:.15s}
+.jump:hover{background:var(--s2);border-color:var(--line2)}
+.jump .n{width:22px;height:22px;border-radius:7px;background:var(--s3);display:grid;place-items:center;font-size:11px;font-weight:700;color:var(--t2);flex:none}
+.feat{display:flex;flex-wrap:wrap;gap:6px}
+.feat span{font-size:12px;padding:5px 9px;border-radius:8px;background:var(--s1);border:1px solid var(--line);color:var(--t2)}
+.feat span b{color:var(--t1);font-weight:600}
+

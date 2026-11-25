@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ÉGIDE Global — On-demand close protection</title>
+<meta name="description" content="ÉGIDE Global: on-demand close protection. Client app, officer app, business portal and operations console, demonstrated across London, Paris, Geneva, Madrid, Berlin, Dubai, New York and Los Angeles.">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111111'/%3E%3Ctext x='32' y='44' font-family='-apple-system,Segoe UI,Helvetica,Arial,sans-serif' font-size='34' font-weight='700' text-anchor='middle' fill='%23FFFFFF'%3E%C3%89%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles/01-base.css" data-bundle="styles">
+<link rel="stylesheet" href="styles/02-barre-haute.css" data-bundle="styles">
+<link rel="stylesheet" href="styles/03-scene.css" data-bundle="styles">
+<link rel="stylesheet" href="styles/04-telephone.css" data-bundle="styles">
+<link rel="stylesheet" href="styles/05-tableaux-de-bord.css" data-bundle="styles">
+<link rel="stylesheet" href="styles/06-reglages.css" data-bundle="styles">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><div class="lg"><svg class="i" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/></svg></div><span>ÉGIDE</span><small id="mk"></small></div>
+  <nav class="seg" id="seg"></nav>
+  <div class="tr"><button class="pill" data-a="lang" id="langb"></button><button class="icb" data-a="settings" aria-label="Settings"><svg class="i s" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button></div>
+</header>
+<main id="app">
+  <section id="v-client" class="stage"><aside class="rail" id="c-rail"></aside>
+    <div class="phone"><div class="island"></div><div class="sbar"><span class="clk"></span><span class="r">5G <i class="bat"></i></span></div>
+      <div class="screen"><div id="c-map"></div><div class="ui" id="c-ui"></div></div></div></section>
+  <section id="v-agent" class="stage" hidden><aside class="rail" id="a-rail"></aside>
+    <div class="phone"><div class="island"></div><div class="sbar"><span class="clk"></span><span class="r">5G <i class="bat"></i></span></div>
+      <div class="screen"><div id="a-map"></div><div class="ui" id="a-ui"></div></div></div></section>
+  <section id="v-biz" hidden><div class="dash"><nav class="side" id="b-side"></nav><div class="dmain" id="b-main"></div></div></section>
+  <section id="v-ops" hidden><div class="dash"><nav class="side" id="o-side"></nav><div class="dmain" id="o-main"></div></div></section>
+</main>
+<div class="scrim" id="scrim" data-a="settings"></div>
+<aside class="drawer" id="drawer"></aside>
+<div class="toast" id="toast"></div>
+<div class="tip" id="tip"></div>
+<script src="js/editions/global.js" data-bundle="app"></script>
+<script src="js/02-noyau.js" data-bundle="app"></script>
+<script src="js/03-villes.js" data-bundle="app"></script>
+<script src="js/04-gammes-prix.js" data-bundle="app"></script>
+<script src="js/05-etat.js" data-bundle="app"></script>
+<script src="js/06-graphiques.js" data-bundle="app"></script>
+<script src="js/07-donnees-demo.js" data-bundle="app"></script>
+<script src="js/08-app-client.js" data-bundle="app"></script>
+<script src="js/09-app-agent.js" data-bundle="app"></script>
+<script src="js/10-portail-entreprise.js" data-bundle="app"></script>
+<script src="js/11-console-operations.js" data-bundle="app"></script>
+<script src="js/12-reglages-routeur.js" data-bundle="app"></script>
+</body>
+</html>
+

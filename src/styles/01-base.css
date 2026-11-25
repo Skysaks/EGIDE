@@ -1,0 +1,33 @@
+
+:root{
+  --bg:#000;--s1:#0c0c0e;--s2:#151517;--s3:#1d1d20;--s4:#2a2a2e;--s5:#3a3a3f;
+  --line:rgba(255,255,255,.07);--line2:rgba(255,255,255,.13);
+  --t1:#f5f5f7;--t2:#a1a1a6;--t3:#6e6e73;
+  --ok:#30d158;--warn:#ffd60a;--bad:#ff453a;--info:#64d2ff;--ac:#0a84ff;
+  --sheet:rgba(16,16,18,.94);--glass:rgba(22,22,24,.86);--top:rgba(0,0,0,.72);
+  --mbg:#0a0b0d;--mgrid:#15161a;--mroad:#202227;--mriver:#0c1726;--mpark:#0d1811;--mlabel:#3a3b41;
+  --frame:#161618;--frame2:#2c2c2e;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Inter","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+[data-theme=light]{
+  --bg:#f5f5f7;--s1:#ffffff;--s2:#f2f2f5;--s3:#e8e8ed;--s4:#dcdce1;--s5:#c7c7cc;
+  --line:rgba(0,0,0,.07);--line2:rgba(0,0,0,.13);
+  --t1:#1d1d1f;--t2:#6e6e73;--t3:#8e8e93;
+  --ok:#248a3d;--warn:#b25000;--bad:#d70015;--info:#0071e3;
+  --sheet:rgba(255,255,255,.94);--glass:rgba(255,255,255,.86);--top:rgba(245,245,247,.75);
+  --mbg:#e9e9ec;--mgrid:#dcdce0;--mroad:#ffffff;--mriver:#c6d9ec;--mpark:#d3e5d1;--mlabel:#9a9aa0;
+  --frame:#d8d8dc;--frame2:#bdbdc2;
+}
+[data-contrast=high]{--t2:#d1d1d6;--t3:#a1a1a6;--line:rgba(255,255,255,.16);--line2:rgba(255,255,255,.28)}
+[data-theme=light][data-contrast=high]{--t2:#3a3a3c;--t3:#55555a;--line:rgba(0,0,0,.18);--line2:rgba(0,0,0,.3)}
+[data-reduce=on] *{animation:none!important;transition:none!important}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+html,body{min-height:100%;background:var(--bg);color:var(--t1);font-family:var(--font);-webkit-font-smoothing:antialiased;font-size:15px;line-height:1.35;transition:background .3s,color .3s}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-align:inherit}
+input,select{font:inherit;color:inherit;background:none;border:0;outline:0}
+select{background:var(--s2);border:1px solid var(--line);border-radius:10px;padding:7px 10px;font-size:13px}
+svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+svg.i.s{width:16px;height:16px}svg.i.l{width:26px;height:26px}
+.ac{color:var(--ac)}
+

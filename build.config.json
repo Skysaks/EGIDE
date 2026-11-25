@@ -1,0 +1,192 @@
+{
+  "name": "ÉGIDE",
+  "repo": "Skysaks/EGIDE",
+  "lang": "fr",
+  "budgetKo": 350,
+  "pages": [
+    {
+      "src": "src/france.html",
+      "out": "dist/egide-france.html",
+      "site": "index.html",
+      "e2e": {
+        "ready": "[data-a=view]",
+        "flows": [
+          {
+            "name": "les quatre applications",
+            "steps": [
+              {
+                "click": "[data-a=view][data-v=agent]",
+                "wait": 400
+              },
+              {
+                "click": "[data-a=view][data-v=biz]",
+                "wait": 400
+              },
+              {
+                "click": "[data-a=view][data-v=ops]",
+                "wait": 400
+              },
+              {
+                "click": "[data-a=view][data-v=client]",
+                "wait": 400
+              }
+            ]
+          },
+          {
+            "name": "démonstrations guidées",
+            "only": "bureau",
+            "steps": [
+              {
+                "click": "[data-a=demo][data-v=book]",
+                "wait": 900
+              },
+              {
+                "click": "[data-a=demo][data-v=custom]",
+                "wait": 900
+              },
+              {
+                "click": "[data-a=demo][data-v=threat]",
+                "wait": 900
+              },
+              {
+                "click": "[data-a=demo][data-v=mismatch]",
+                "wait": 900
+              },
+              {
+                "click": "[data-a=demo][data-v=sos]",
+                "wait": 900
+              },
+              {
+                "click": "[data-a=demo][data-v=end]",
+                "wait": 900
+              },
+              {
+                "click": "[data-a=demo][data-v=activity]",
+                "wait": 900
+              }
+            ]
+          },
+          {
+            "name": "changement de langue",
+            "only": "bureau",
+            "steps": [
+              {
+                "click": "#langb"
+              },
+              {
+                "click": "#langb"
+              }
+            ]
+          },
+          {
+            "name": "panneau de réglages",
+            "steps": [
+              {
+                "click": "[data-a=settings]:visible",
+                "wait": 600
+              }
+            ]
+          }
+        ]
+      },
+      "captures": {
+        "wait": 2000
+      }
+    },
+    {
+      "src": "src/global.html",
+      "out": "dist/egide-global.html",
+      "site": "global.html",
+      "e2e": {
+        "ready": "[data-a=view]",
+        "flows": [
+          {
+            "name": "les quatre applications",
+            "steps": [
+              {
+                "click": "[data-a=view][data-v=agent]",
+                "wait": 400
+              },
+              {
+                "click": "[data-a=view][data-v=biz]",
+                "wait": 400
+              },
+              {
+                "click": "[data-a=view][data-v=ops]",
+                "wait": 400
+              },
+              {
+                "click": "[data-a=view][data-v=client]",
+                "wait": 400
+              }
+            ]
+          },
+          {
+            "name": "démonstrations guidées",
+            "only": "bureau",
+            "steps": [
+              {
+                "click": "[data-a=demo][data-v=book]",
+                "wait": 900
+              },
+              {
+                "click": "[data-a=demo][data-v=custom]",
+                "wait": 900
+              },
+              {
+                "click": "[data-a=demo][data-v=threat]",
+                "wait": 900
+              },
+              {
+                "click": "[data-a=demo][data-v=mismatch]",
+                "wait": 900
+              },
+              {
+                "click": "[data-a=demo][data-v=sos]",
+                "wait": 900
+              },
+              {
+                "click": "[data-a=demo][data-v=end]",
+                "wait": 900
+              },
+              {
+                "click": "[data-a=demo][data-v=activity]",
+                "wait": 900
+              }
+            ]
+          },
+          {
+            "name": "changement de langue",
+            "only": "bureau",
+            "steps": [
+              {
+                "click": "#langb"
+              },
+              {
+                "click": "#langb"
+              }
+            ]
+          },
+          {
+            "name": "panneau de réglages",
+            "steps": [
+              {
+                "click": "[data-a=settings]:visible",
+                "wait": 600
+              }
+            ]
+          }
+        ]
+      },
+      "captures": {
+        "wait": 2000
+      }
+    }
+  ],
+  "card": {
+    "kicker": "Sécurité · plateforme à la demande",
+    "tagline": "La protection rapprochée réservée en deux gestes, suivie de bout en bout.",
+    "background": "#050506",
+    "accent": "#4F7CFF"
+  }
+}

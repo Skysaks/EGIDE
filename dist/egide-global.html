@@ -1,9 +1,13 @@
 <!DOCTYPE html>
-<html lang="fr">
+<!-- ÉGIDE · © 2026 Florian Iglesias — Tous droits réservés · https://github.com/Skysaks/EGIDE -->
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ÉGIDE France — Protection rapprochée à la demande</title>
+<title>ÉGIDE Global — On-demand close protection</title>
+<meta name="description" content="ÉGIDE Global: on-demand close protection. Client app, officer app, business portal and operations console, demonstrated across London, Paris, Geneva, Madrid, Berlin, Dubai, New York and Los Angeles.">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111111'/%3E%3Ctext x='32' y='44' font-family='-apple-system,Segoe UI,Helvetica,Arial,sans-serif' font-size='34' font-weight='700' text-anchor='middle' fill='%23FFFFFF'%3E%C3%89%3C/text%3E%3C/svg%3E">
 <style>
 :root{
   --bg:#000;--s1:#0c0c0e;--s2:#151517;--s3:#1d1d20;--s4:#2a2a2e;--s5:#3a3a3f;
@@ -342,29 +346,49 @@ tr:last-child td{border-bottom:0}
 <div class="toast" id="toast"></div>
 <div class="tip" id="tip"></div>
 <script>
-const CFG={market:'fr',defLang:'fr',defCity:'paris',storeKey:'egide-fr',
- badge:{fr:'FRANCE',en:'FRANCE'},
+const CFG={market:'intl',defLang:'en',defCity:'london',storeKey:'egide-intl',
+ badge:{fr:'GLOBAL',en:'GLOBAL'},
  cities:[
-  {id:'paris',name:'Paris',reg:'fr',cur:'EUR',k:1,lat:48.86,lon:2.35,emerg:[['17','Police'],['112','Urgences UE'],['114','SMS']],
+  {id:'london',name:'London',reg:'uk',cur:'GBP',k:1.2,lat:51.51,lon:-0.13,emerg:[['999','Police'],['112','Emergency']],
+   labels:['MAYFAIR','SOHO','THE CITY','KENSINGTON','WESTMINSTER','SHOREDITCH','CANARY WHARF'],
+   base:['Belgravia, SW1','Canary Wharf, E14','Mayfair, W1'],
+   pois:[['Royal Albert Hall','Kensington'],['ExCeL London','Royal Docks'],['Farnborough Airport','Business aviation'],['King’s Cross St Pancras','N1'],['Wembley Stadium','HA9']],
+   names:['James W.','Amara O.','Oliver H.','Priya S.','Callum R.','Sophie L.'],langs:[['EN','FR'],['EN','FR','YO'],['EN','DE'],['EN','HI','FR'],['EN'],['EN','ES']]},
+  {id:'paris',name:'Paris',reg:'fr',cur:'EUR',k:1,lat:48.86,lon:2.35,emerg:[['17','Police'],['112','EU emergency']],
    labels:['ÉTOILE','OPÉRA','MARAIS','INVALIDES','MONTPARNASSE','BASTILLE','LA DÉFENSE'],
    base:['Rue de Varenne, 7e','Avenue Hoche, 8e','Place Vendôme, 1er'],
-   pois:[['Théâtre des Champs-Élysées','Avenue Montaigne, 8e'],['Palais des Congrès','Porte Maillot, 17e'],['Aéroport du Bourget','Aviation d’affaires'],['Gare de Lyon','Paris 12e'],['Stade de France','Saint-Denis']],
+   pois:[['Théâtre des Champs-Élysées','Avenue Montaigne'],['Palais des Congrès','Porte Maillot'],['Paris–Le Bourget Airport','Business aviation'],['Gare de Lyon','12e'],['Stade de France','Saint-Denis']],
    names:['Karim B.','Léa M.','Thomas R.','Inès D.','Marc-Antoine V.','Sofia K.'],langs:[['FR','EN','AR'],['FR','EN','ES'],['FR','EN'],['FR','EN','IT'],['FR','EN','DE'],['FR','EN','RU']]},
-  {id:'lyon',name:'Lyon',reg:'fr',cur:'EUR',k:.85,lat:45.76,lon:4.84,emerg:[['17','Police'],['112','Urgences UE'],['114','SMS']],
-   labels:['PRESQU’ÎLE','CONFLUENCE','PART-DIEU','VIEUX LYON','CROIX-ROUSSE','GERLAND','BROTTEAUX'],
-   base:['Quai Saint-Antoine, 2e','Cours Lafayette, 3e','Place Bellecour, 2e'],
-   pois:[['Opéra de Lyon','Place de la Comédie'],['Cité Internationale','Lyon 6e'],['Aéroport Saint-Exupéry','Colombier-Saugnieu'],['Gare Part-Dieu','Lyon 3e'],['Groupama Stadium','Décines']],
-   names:['Yanis T.','Chloé B.','Hugo L.','Sarah N.','Mehdi A.','Camille F.'],langs:[['FR','EN','AR'],['FR','EN'],['FR','EN','DE'],['FR','EN','ES'],['FR','EN'],['FR','EN','IT']]},
-  {id:'azur',name:'Côte d’Azur',reg:'fr',cur:'EUR',k:1.15,lat:43.7,lon:7.27,emerg:[['17','Police'],['112','Urgences UE'],['114','SMS']],
-   labels:['CROISETTE','LE SUQUET','PROMENADE','VIEUX NICE','PORT','CIMIEZ','ANTIBES'],
-   base:['La Californie, Cannes','Promenade des Anglais, Nice','La Croisette, Cannes'],
-   pois:[['Palais des Festivals','Cannes'],['Port Canto','Cannes'],['Aéroport Nice Côte d’Azur','Aviation d’affaires'],['Allianz Riviera','Nice'],['Cap d’Antibes','Antibes']],
-   names:['Nicolas G.','Julie P.','Rayan K.','Manon V.','Lorenzo C.','Emma R.'],langs:[['FR','EN','IT'],['FR','EN','RU'],['FR','EN','AR'],['FR','EN'],['FR','EN','IT'],['FR','EN','DE']]},
-  {id:'toulouse',name:'Toulouse',reg:'fr',cur:'EUR',k:.8,lat:43.6,lon:1.44,emerg:[['17','Police'],['112','Urgences UE'],['114','SMS']],
-   labels:['CAPITOLE','CARMES','SAINT-CYPRIEN','COMPANS','MATABIAU','RANGUEIL','BLAGNAC'],
-   base:['Allées Jean-Jaurès','Compans-Caffarelli','Place du Capitole'],
-   pois:[['Théâtre du Capitole','Place du Capitole'],['MEETT','Parc des expositions'],['Aéroport Toulouse-Blagnac','Aviation d’affaires'],['Gare Matabiau','Toulouse'],['Stadium de Toulouse','Île du Ramier']],
-   names:['Bastien M.','Lina H.','Antoine D.','Maëlys S.','Sami B.','Jade L.'],langs:[['FR','EN','ES'],['FR','EN','AR'],['FR','EN'],['FR','EN','ES'],['FR','EN','AR'],['FR','EN']]}
+  {id:'geneva',name:'Geneva',reg:'ch',cur:'CHF',k:1.35,lat:46.2,lon:6.15,emerg:[['117','Police'],['112','Urgences']],
+   labels:['EAUX-VIVES','PÂQUIS','PLAINPALAIS','CAROUGE','CHAMPEL','NATIONS','COINTRIN'],
+   base:['Cologny','Rue du Rhône','Quai du Mont-Blanc'],
+   pois:[['Grand Théâtre','Place de Neuve'],['Palexpo','Grand-Saconnex'],['Geneva Airport','Business aviation'],['Gare Cornavin','Centre'],['Palais des Nations','Nations']],
+   names:['Luca F.','Élise M.','Marco R.','Nina B.','Samuel K.','Clara V.'],langs:[['FR','EN','IT'],['FR','EN','DE'],['FR','EN','IT'],['FR','EN','RU'],['FR','EN','AR'],['FR','EN','DE']]},
+  {id:'madrid',name:'Madrid',reg:'es',cur:'EUR',k:.85,lat:40.42,lon:-3.7,emerg:[['091','Policía'],['112','Emergencias']],
+   labels:['SALAMANCA','CHAMBERÍ','SOL','CHUECA','RETIRO','CASTELLANA','BARAJAS'],
+   base:['La Moraleja','Paseo de la Castellana','Plaza de las Cortes'],
+   pois:[['Teatro Real','Plaza de Oriente'],['IFEMA','Campo de las Naciones'],['Madrid–Barajas Airport','Business aviation'],['Atocha Station','Centro'],['Santiago Bernabéu','Chamartín']],
+   names:['Javier M.','Lucía G.','Diego R.','Carmen S.','Álvaro P.','Sara L.'],langs:[['ES','EN'],['ES','EN','FR'],['ES','EN','PT'],['ES','EN'],['ES','EN','AR'],['ES','EN','IT']]},
+  {id:'berlin',name:'Berlin',reg:'de',cur:'EUR',k:.95,lat:52.52,lon:13.4,emerg:[['110','Polizei'],['112','Notruf']],
+   labels:['MITTE','TIERGARTEN','KREUZBERG','PRENZLAUER BERG','CHARLOTTENBURG','FRIEDRICHSHAIN','POTSDAMER PL.'],
+   base:['Grunewald','Potsdamer Platz','Pariser Platz'],
+   pois:[['Philharmonie','Tiergarten'],['Messe Berlin','Charlottenburg'],['BER Airport','Business aviation'],['Hauptbahnhof','Mitte'],['Olympiastadion','Westend']],
+   names:['Lukas M.','Hannah S.','Jonas K.','Mia W.','Felix B.','Lea H.'],langs:[['DE','EN'],['DE','EN','FR'],['DE','EN','TR'],['DE','EN','RU'],['DE','EN'],['DE','EN','PL']]},
+  {id:'dubai',name:'Dubai',reg:'ae',cur:'AED',k:1.25,lat:25.2,lon:55.27,emerg:[['999','Police'],['998','Ambulance']],
+   labels:['DIFC','DOWNTOWN','MARINA','JUMEIRAH','PALM','BUSINESS BAY','DEIRA'],
+   base:['Emirates Hills','DIFC','Palm Jumeirah'],
+   pois:[['Dubai Opera','Downtown'],['World Trade Centre','Sheikh Zayed Rd'],['DXB Airport','Private terminal'],['Dubai Mall','Downtown'],['Burj Al Arab','Jumeirah']],
+   names:['Omar H.','Layla K.','Rashid A.','Noor S.','Daniel P.','Aisha M.'],langs:[['AR','EN'],['AR','EN','FR'],['AR','EN','UR'],['AR','EN'],['EN','RU','FR'],['AR','EN','HI']]},
+  {id:'newyork',name:'New York',reg:'usny',cur:'USD',k:1.4,lat:40.71,lon:-74.0,emerg:[['911','Emergency']],
+   labels:['MIDTOWN','SOHO','TRIBECA','UPPER EAST','CHELSEA','FINANCIAL DIST.','BROOKLYN'],
+   base:['Upper East Side','Hudson Yards','Fifth Avenue'],
+   pois:[['Carnegie Hall','Midtown'],['Javits Center','Hudson Yards'],['Teterboro Airport','Business aviation'],['Grand Central','Midtown'],['Madison Square Garden','Chelsea']],
+   names:['Marcus J.','Elena R.','Ryan O.','Keisha W.','David C.','Maya G.'],langs:[['EN','ES'],['EN','RU','FR'],['EN'],['EN','FR'],['EN','ZH'],['EN','ES','PT']]},
+  {id:'losangeles',name:'Los Angeles',reg:'usca',cur:'USD',k:1.3,lat:34.05,lon:-118.24,emerg:[['911','Emergency']],
+   labels:['BEVERLY HILLS','HOLLYWOOD','SANTA MONICA','DOWNTOWN','WEST HOLLYWOOD','BEL AIR','MALIBU'],
+   base:['Bel Air','Century City','Beverly Hills'],
+   pois:[['Dolby Theatre','Hollywood'],['LA Convention Center','Downtown'],['Van Nuys Airport','Business aviation'],['Union Station','Downtown'],['SoFi Stadium','Inglewood']],
+   names:['Tyler B.','Camila R.','Jordan K.','Ava M.','Mateo S.','Zoe L.'],langs:[['EN','ES'],['EN','ES','PT'],['EN','KO'],['EN','FR'],['EN','ES'],['EN','JA']]}
  ]};
 
 /* ================= CORE ================= */
@@ -1265,12 +1289,14 @@ window.act=act;
 document.addEventListener('click',e=>{const el=e.target.closest('[data-a]');if(!el)return;e.preventDefault();e.stopPropagation();act(el.dataset.a,el.dataset.v,el)});
 
 function resetClient(){stopAnim('c');Object.assign(S.c,{step:'home',dest:null,threat:0,tier:'escorte',hours:2,when:'now',agent:null,mission:null,mRoute:null,mPos:null,agentArrived:false,prot:1})}
-function demo(v){setView('client');resetClient();
- if(v==='book'){cGo('home');setTimeout(()=>act('c:dest','hotel'),500);setTimeout(()=>book(),1500)}
- if(v==='custom'){S.c.dest=PLACES[3];S.c.prot=3;S.c.langs=[city().langs[0][0],'EN'];S.c.female=true;S.c.disc=2;S.c.proto.recon=true;cGo('tiers');setTimeout(()=>cGo('prefs'),700)}
+/* Les démonstrations guidées programment des étapes différées : on les annule avant d'en lancer une autre. */
+let demoT=[];const dT=(f,ms)=>demoT.push(setTimeout(f,ms));
+function demo(v){demoT.forEach(clearTimeout);demoT=[];setView('client');resetClient();
+ if(v==='book'){cGo('home');dT(()=>act('c:dest','hotel'),500);dT(()=>book(),1500)}
+ if(v==='custom'){S.c.dest=PLACES[3];S.c.prot=3;S.c.langs=[city().langs[0][0],'EN'];S.c.female=true;S.c.disc=2;S.c.proto.recon=true;cGo('tiers');dT(()=>cGo('prefs'),700)}
  if(v==='threat'){S.c.dest=PLACES[0];S.c.ctx='harc';S.c.threat=2;S.c.tier='detail';S.c.hours=4;cGo('tiers')}
- if(v==='mismatch'){S.c.dest=PLACES[2];book();setTimeout(()=>{stopAnim('c');S.c.agentPos={x:ME.x+12,y:ME.y+8};S.c.agentArrived=true;cGo('arrived')},3200)}
- if(v==='sos'){S.c.dest=PLACES[3];S.c.agent=AGENTS[3];S.c.mission={id:nextId(),client:'Camille L.',tier:tName('escorte'),agent:AGENTS[3].name+' '+AGENTS[3].last,zone:city().name,st:L('En cours','Live'),lvl:'g',x:480,y:300};S.o.missions.unshift(S.c.mission);startMission();setTimeout(()=>toast(L('Maintenez le bouton SOS 1,2 s','Hold the SOS button for 1.2 s')),400)}
+ if(v==='mismatch'){S.c.dest=PLACES[2];book();dT(()=>{stopAnim('c');S.c.agentPos={x:ME.x+12,y:ME.y+8};S.c.agentArrived=true;cGo('arrived')},3200)}
+ if(v==='sos'){S.c.dest=PLACES[3];S.c.agent=AGENTS[3];S.c.mission={id:nextId(),client:'Camille L.',tier:tName('escorte'),agent:AGENTS[3].name+' '+AGENTS[3].last,zone:city().name,st:L('En cours','Live'),lvl:'g',x:480,y:300};S.o.missions.unshift(S.c.mission);startMission();dT(()=>toast(L('Maintenez le bouton SOS 1,2 s','Hold the SOS button for 1.2 s')),400)}
  if(v==='end'){S.c.dest=PLACES[1];S.c.agent=AGENTS[1];S.c.rating=5;S.c.tags=['Discrétion','Ponctualité'];S.c.tip=10;cGo('end')}
  if(v==='activity')cGo('activity')}
 function ademo(v){setView('agent');const a=S.a;stopAnim('a');clearInterval(offerC);clearTimeout(offerT);a.stage=null;a.pos=null;aRoute(null);
